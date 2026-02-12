@@ -109,10 +109,23 @@ noBtn.addEventListener("mouseover", function() {
 // Cambio de pantalla
 const yesBtn = document.getElementById("yesBtn");
 yesBtn.addEventListener("click", function() {
-    document.getElementById("firstScreen").style.display = "none";
-    document.getElementById("secondScreen").style.display = "block";
-    document.getElementById("secondScreen").style.display = "block";
     document.getElementById("music").play();
+
+    const first = document.getElementById("firstScreen");
+    const second = document.getElementById("secondScreen");
+
+    first.style.opacity = "0";
+    first.style.transition = "1s";
+
+    setTimeout(() => {
+        first.style.display = "none";
+        second.style.display = "block";
+        second.style.opacity = "0";
+        second.style.transition = "1s";
+        setTimeout(() => {
+            second.style.opacity = "1";
+        }, 100);
+    }, 1000);
 });
 
 // Crear corazones flotando
